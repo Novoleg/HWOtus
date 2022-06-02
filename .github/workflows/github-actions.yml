@@ -38,4 +38,5 @@ jobs:
 
     - name: Run Go Code
       run: |
+        cd ./hw_01/
         go run ./hw_01/main.go

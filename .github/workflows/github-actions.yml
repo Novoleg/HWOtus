@@ -15,8 +15,7 @@ jobs:
 
     - name: Lint Go Code
       run: |
-        apt update && apt install golint
-        golint ./hw_01/
+        apt update && apt install -y golint && golint ./hw_01/
 
 
   # run-golang-code:

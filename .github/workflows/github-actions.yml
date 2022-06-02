@@ -6,17 +6,23 @@ jobs:
     container:
       image: golang:1.18
     steps:
-    - name: Lint golang code
+    - name: Where
       run: |
-        golint ./hw_01/
-    - run: echo "🍏 This job's status is ${{ job.status }}."
-    
-  run-golang-code:
-    runs-on: ubuntu-latest
-    container:
-      image: golang:1.18
-    steps:
-    - name: Lint golang code
+        ls -l
+    - name: Install golint
       run: |
-        go run ./hw_01/main.go
-    - run: echo "🍏 This job's status is ${{ job.status }}."
+        apt update && apt install -y golint
+    # - name: Lint golang code
+    #   run: |
+    #     golint ./hw_01/
+    # - run: echo "🍏 This job's status is ${{ job.status }}."
+
+  # run-golang-code:
+  #   runs-on: ubuntu-latest
+  #   container:
+  #     image: golang:1.18
+  #   steps:
+  #   - name: Lint golang code
+  #     run: |
+  #       go run ./hw_01/main.go
+  #   - run: echo "🍏 This job's status is ${{ job.status }}."

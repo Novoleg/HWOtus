@@ -5,17 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: golang:1.18
-      steps:
-        - name: Lint golang code
-          run: |
-            golint ./hw_01/
-        - run: echo "🍏 This job's status is ${{ job.status }}."
+    steps:
+    - name: Lint golang code
+      run: |
+        golint ./hw_01/
+    - run: echo "🍏 This job's status is ${{ job.status }}."
+    
   run-golang-code:
     runs-on: ubuntu-latest
     container:
       image: golang:1.18
-      steps:
-        - name: Lint golang code
-          run: |
-            go run ./hw_01/main.go
-        - run: echo "🍏 This job's status is ${{ job.status }}."
+    steps:
+    - name: Lint golang code
+      run: |
+        go run ./hw_01/main.go
+    - run: echo "🍏 This job's status is ${{ job.status }}."

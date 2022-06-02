@@ -16,6 +16,7 @@ jobs:
     - name: Lint Go Code
       run: |
         export PATH=$PATH:$(go env GOPATH)/bin
+        echo $PATH
         go get -u golang.org/x/lint/golint && golint ./hw_01/
 
 

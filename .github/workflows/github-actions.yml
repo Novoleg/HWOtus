@@ -18,9 +18,8 @@ jobs:
     - name: Lint Go Code
       run: |
         export PATH=$PATH:$(go env GOPATH)/bin
-        echo $PATH
-        go get -u golang.org/x/lint/golint
-        ls -l /home/runner/go/bin
+        go install golang.org/x/lint/golint@latest
+        golint ./hw_01/
   
   run:
     name: Run
@@ -37,6 +36,6 @@ jobs:
     - name: Check out code
       uses: actions/checkout@v3
 
-    - name: Lint Go Code
+    - name: Run Go Code
       run: |
         go run ./hw_01/main.go

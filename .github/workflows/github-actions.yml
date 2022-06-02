@@ -4,6 +4,8 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    env:
+      GO111MODULE: on
     steps:
     - name: Set up Go
       uses: actions/setup-go@v3
@@ -19,14 +21,22 @@ jobs:
         echo $PATH
         go get -u golang.org/x/lint/golint
         ls -l /home/runner/go/bin
+  
+  run:
+    name: Run
+    runs-on: ubuntu-latest
+    env:
+      GO111MODULE: on
+    needs: [lint]
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
 
+    - name: Check out code
+      uses: actions/checkout@v3
 
-  # run-golang-code:
-  #   runs-on: ubuntu-latest
-  #   container:
-  #     image: golang:1.18
-  #   steps:
-  #   - name: Lint golang code
-  #     run: |
-  #       go run ./hw_01/main.go
-  #   - run: echo "🍏 This job's status is ${{ job.status }}."
+    - name: Lint Go Code
+      run: |
+        go run ./hw_01/main.go

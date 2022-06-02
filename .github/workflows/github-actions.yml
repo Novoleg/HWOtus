@@ -1,21 +1,23 @@
 name: Lint and Run golang code
 on: [push]
 jobs:
-  lint-golang-code:
+  lint:
+    name: Lint
     runs-on: ubuntu-latest
-    container:
-      image: golang:1.18
     steps:
-    - name: Where
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.18
+
+    - name: Check out code
+      uses: actions/checkout@v3
+
+    - name: Lint Go Code
       run: |
-        ls -l
-    - name: Install golint
-      run: |
-        apt update && apt install -y golint
-    # - name: Lint golang code
-    #   run: |
-    #     golint ./hw_01/
-    # - run: echo "🍏 This job's status is ${{ job.status }}."
+        go get -u golang.org/x/lint/golint 
+        golint ./hw_01/
+
 
   # run-golang-code:
   #   runs-on: ubuntu-latest
